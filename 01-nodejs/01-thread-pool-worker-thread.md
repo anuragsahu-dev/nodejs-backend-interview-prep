@@ -18,3 +18,55 @@ Source Code one output
 
 by default we have 4 thread in thread pool and we are doing 4 crypto operation and one thread handle one crypto operation at a time so here average time of each crypto operation is approx same. 1 crypto operation is running on one thread
 
+We have total 5 crypto task and by default we have a thread in thread pool. So 4 crypto operation run simultaneously but one crypto operation have to wait that is operation 5 and starting 4 operation takes 2100ms average time, operation 5 takes 3813ms
+
+source code 2 output
+
+- 1975ms Password 1 Done
+- 2097ms Password 3 Done
+- 2185ms Password 2 Done
+- 2357ms Password 4 Done
+- 3813ms Password 5 Done
+
+- 1 to 4 task take approx same average time 
+- 5 to 8 task take approx same time 
+
+All this thing happen when we have 4 thread in thread pool
+
+
+some short notes
+
+- You cannot run JS code inside the thread pool.
+- It is automatic — you do NOT create threads.
+- Default size = 4 threads (configurable with UV_THREADPOOL_SIZE).
+- Used for system-level async tasks (fs, crypto, DNS, zlib).
+
+# Worker Threads in nodejs
+
+**Worker Threads are a multithreading mechanism in Node.js that allow CPU-intensive JavaScript code to run in parallel, preventing the blocking of the event loop and improving performance.**
+
+When do we use Worker Threads?
+
+Use them for CPU-heavy tasks, such as:
+
+- Hashing / Encryption (bcrypt, crypto.pbkdf2)
+- Large calculations (prime generation, Fibonacci, etc.)
+- Machine learning tasks
+- Image / video processing
+- Data parsing (large JSON files)
+
+- If a task is CPU-bound, use Worker Threads.
+- If a task is I/O-bound, let Node handle it normally.
+
+How they work internally
+
+- Each Worker Thread has its own event loop.
+- Runs JS in parallel, but can share memory using SharedArrayBuffer.
+- Communicates with the main thread via message passing.
+
+| Feature           | Worker Threads     | Thread Pool            |
+| ----------------- | ------------------ | ---------------------- |
+| Language          | JavaScript         | C++ / internal libuv   |
+| Use Case          | CPU-bound JS tasks | Asynchronous I/O tasks |
+| Runs on           | Separate JS thread | 4 threads (default)    |
+| Developer Control | Full control       | No control             |
