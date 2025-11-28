@@ -114,7 +114,14 @@ Yes, but with **limitations**.
 
 ```js
 import pkg from './file.cjs';
+```
 
-## Final Interview-Perfect Summary
+---
 
-**CommonJS is the old Node.js module system using require() and module.exports, loaded synchronously at runtime. ES Modules are the modern JavaScript standard using import and export, loaded asynchronously with static analysis. ES Modules offer better optimization, browser support, and future-proofing.**
+## Summary
+
+- **CommonJS** = Old Node.js module system, synchronous, runtime-loaded
+- **ES Modules** = Modern JavaScript standard, asynchronous, compile-time analyzed
+- **ESM** offers better optimization, browser support, and future-proofing
+- Node.js decides based on file extension (`.mjs`) or `package.json` `"type": "module"`
+- **Interop** is possible but limited (ESM can import CJS, but not vice versa)
