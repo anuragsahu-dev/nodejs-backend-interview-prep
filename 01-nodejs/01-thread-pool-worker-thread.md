@@ -33,7 +33,6 @@ source code 2 output
 
 All this thing happen when we have 4 thread in thread pool
 
-
 some short notes
 
 - You cannot run JS code inside the thread pool.
@@ -49,7 +48,7 @@ When do we use Worker Threads?
 
 Use them for CPU-heavy tasks, such as:
 
-- Hashing / Encryption (bcrypt, crypto.pbkdf2)
+- Hashing / Encryption 
 - Large calculations (prime generation, Fibonacci, etc.)
 - Machine learning tasks
 - Image / video processing
@@ -63,6 +62,9 @@ How they work internally
 - Each Worker Thread has its own event loop.
 - Runs JS in parallel, but can share memory using SharedArrayBuffer.
 - Communicates with the main thread via message passing.
+- We send data in worker threads through WorkerData
+- and worker send data to main thread via parentPort.postMessage()
+- we use node:worker_threads module for multithreading in nodejs
 
 | Feature           | Worker Threads     | Thread Pool            |
 | ----------------- | ------------------ | ---------------------- |
@@ -70,3 +72,22 @@ How they work internally
 | Use Case          | CPU-bound JS tasks | Asynchronous I/O tasks |
 | Runs on           | Separate JS thread | 4 threads (default)    |
 | Developer Control | Full control       | No control             |
+
+
+## Difference between Worker Thread and Thread Pool
+
+Thread Pool (libuv)
+
+- Internal native thread pool managed by Node.js
+- Default: 4 threads
+- Runs native C++ async tasks (fs, crypto, zlib)
+- Cannot run JavaScript code
+- You cannot control or manage threads directly
+
+Worker Threads
+
+- You manually create JS threads using new Worker()
+- Runs CPU-heavy JS code in parallel
+- Each worker has its own event loop + memory + call stack
+- Best for CPU-intensive tasks (loops, hashing, image processing)
+- Communication via messages
