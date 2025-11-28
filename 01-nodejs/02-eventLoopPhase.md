@@ -318,6 +318,8 @@ B
 NextTick
 Promise
 Immediate OR Timeout (not fixed in top level)
+
+This above output is not fixed for NextTick and Promise
 ```
 
 **Explanation:**
