@@ -99,6 +99,7 @@ It runs continuously in cycles called **phases**, processing different types of 
 
 ### Event Loop High-Level Box Diagram
 
+```text
    ┌───────────────────────────────────┐
    │           Timers Phase            │
    │      (setTimeout, setInterval)    │
@@ -123,6 +124,7 @@ It runs continuously in cycles called **phases**, processing different types of 
    │         Close Callbacks           │
    │       (socket.on 'close')         │
    └───────────────────────────────────┘
+```
 
 
 The loop continues until no tasks remain, after which Node.js exits.
