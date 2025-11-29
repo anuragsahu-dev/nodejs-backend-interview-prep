@@ -11,6 +11,8 @@ A module in Node.js is a reusable block of code (functions, variables, classes, 
 
 ## Module Systems in Node.js
 
+Node.js uses a module system to load, manage, and execute modules.
+
 Node.js supports two module systems:
 
 ### 1. CommonJS (CJS)
