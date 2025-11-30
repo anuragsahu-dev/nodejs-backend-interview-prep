@@ -173,3 +173,26 @@ Using Docker Swarm/K8s → do NOT use clustering, scale containers instead.
 - One process per container
 - Use orchestration to scale horizontally
 - Use clustering only for standalone VPS/deployment
+
+## Worker Threads vs Cluster (Short & Important)
+
+### Worker Threads
+
+- Used for CPU-intensive tasks inside the same Node process.
+- Multiple threads share memory using SharedArrayBuffer.
+- Lightweight → Best for heavy calculations, hashing, image/PDF processing.
+- Does NOT create separate Node processes → still one server.
+- Use when you want parallel computation inside one Node app.
+
+### Cluster Module
+
+- Used to create multiple Node processes (workers), each running on a different CPU core.
+- Each process has its own event loop & memory → isolated.
+- Improves throughput for HTTP servers by load-balancing requests.
+- Heavy compared to worker threads.
+- Use when you want to scale your HTTP server across all CPU cores.
+
+### Super Short Summary (Interview Line)
+
+Worker Threads = parallel CPU tasks inside one process.
+Cluster = multiple Node processes to scale your server on all CPU cores.
