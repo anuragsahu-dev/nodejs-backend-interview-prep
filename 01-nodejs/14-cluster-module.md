@@ -52,26 +52,24 @@ They all listen on the same port through internal load balancing.
 
 ```javascript
 import cluster from "node:cluster";
-import os from "node:os";
+import { availableParallelism } from "node:os";
 import http from "http";
 
 if (cluster.isPrimary) {
   console.log("Primary PID:", process.pid);
 
-  const cpuCount = os.cpus().length;
+  const cpuCount = availableParallelism();
 
-  // Create one worker per CPU core
   for (let i = 0; i < cpuCount; i++) {
     cluster.fork();
   }
 
-  // Restart worker if it crashes
   cluster.on("exit", (worker) => {
     console.log(`Worker ${worker.process.pid} died. Restarting...`);
     cluster.fork();
   });
+
 } else {
-  // Worker logic
   const server = http.createServer((req, res) => {
     res.end(`Handled by worker ${process.pid}`);
   });
