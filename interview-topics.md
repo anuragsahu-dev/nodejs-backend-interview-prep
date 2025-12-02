@@ -81,6 +81,9 @@
 - Index basics (B-tree, unique index, compound index)
 - Query optimization basics
 
+
+not done
+
 ## 6. SQL Theory (Basics → Intermediate)
 
 - SELECT, INSERT, UPDATE, DELETE
@@ -95,6 +98,9 @@
 - Explain analyze (basic idea)
 - WHEN SQL beats NoSQL in real systems
 - N+1 problem in SQL
+
+
+working on
 
 ## 7. ORMs Theory (Prisma + Mongoose)
 
