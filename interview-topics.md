@@ -23,14 +23,14 @@
 - What is REST?
 - REST architectural constraints
 - HTTP Methods meaning
-- Idempotency
+- Idempotency (not done)
 - HTTP status code families
 - Query params vs Path params vs Body vs Headers
 - Pagination theory
 - Filtering / Searching
 - Sorting
 - API versioning strategies
-- Rate limiting theory
+- Rate limiting theory (not done)
 - REST vs GraphQL vs gRPC
 - Stateless vs Stateful APIs
 - Resource naming & best practices
