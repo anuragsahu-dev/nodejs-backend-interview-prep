@@ -30,7 +30,6 @@
 - Filtering / Searching
 - Sorting
 - API versioning strategies
-- Rate limiting theory (not done)
 - REST vs GraphQL vs gRPC
 - Stateless vs Stateful APIs
 - Resource naming & best practices
