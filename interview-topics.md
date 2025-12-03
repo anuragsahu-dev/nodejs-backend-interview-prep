@@ -172,7 +172,6 @@ working on
 ## 11. Real-Time Communication Theory
 
 ### WebSocket
-
 - WebSocket vs HTTP
 - WebSocket vs SSE vs Polling
 - Full-duplex communication
