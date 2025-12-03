@@ -104,6 +104,30 @@ When Redis memory is full, it removes some keys.
 
 Most production systems use LRU.
 
+### Is LRU the default?
+
+**No.** By default, Redis uses `noeviction` policy, which means:
+
+- Redis will **not** remove any keys when memory is full
+- It will return errors on write operations instead
+
+You must explicitly configure an eviction policy in `redis.conf`:
+
+```conf
+maxmemory 256mb
+maxmemory-policy allkeys-lru
+```
+
+**Common eviction policies:**
+
+- `noeviction` → Default, returns error when memory full
+- `allkeys-lru` → Remove least recently used keys (most common)
+- `allkeys-lfu` → Remove least frequently used keys
+- `volatile-lru` → Remove LRU keys with TTL set
+- `volatile-lfu` → Remove LFU keys with TTL set
+
+**For production:** Use `allkeys-lru` or `volatile-lru`.
+
 As a junior backend developer, only LRU and LFU matter for interviews.
 
 ## 7. Cache-Aside Pattern (Most Used Pattern)
