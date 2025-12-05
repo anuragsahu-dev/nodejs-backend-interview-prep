@@ -259,6 +259,7 @@ working on
 - Log rotation
 - Difference between monitoring vs logging vs tracing
 
+not done
 ## 15. Backend Architecture + Design Patterns
 
 - MVC
@@ -269,12 +270,13 @@ working on
 - Repository pattern
 - Event-driven architecture
 - Monolithic vs Microservices
-- API Gateway (high-level)
 
+not done
 ## 16. System Design (SDE-1 Level)
 
 - Load balancer
 - Caching layer
+- API Gateway (high-level)
 - CDN
 - Replication
 - Sharding
